@@ -1,0 +1,75 @@
+[![CI](https://github.com/PyDFLT/PyDFLT/actions/workflows/CI.yml/badge.svg)](https://github.com/PyDFLT/PyDFLT/actions/workflows/CI.yml)
+
+![alt text](https://github.com/PyDFLT/PyDFLT/blob/main/images/logo.png?raw=true)
+
+
+## A Python-based Decision-Focused Learning Toolbox
+**PyDFLT** is designed to help researchers apply and develop Decision Focused Learning (DFL) tools in Python. It uses **CVXPYLayers** [1] for differentiable models, **PyEPO** [2] for models with a linear objective and has an implementation of **SFGE** [3] and **Lancer** [4]. To help with research, it supports Weights & Biases (https://wandb.ai/) and Optuna (https://optuna.org).
+PyDFLT v0.1.0 is now available:
+
+`pip install pydflt`
+
+### Documentation
+
+Documentation can be found https://pydflt.github.io/documentation.
+
+### How to cite
+
+If you use PyDFLT in your work, please cite the software. Citation metadata is maintained in [`CITATION.cff`](CITATION.cff) at the repo root, which also drives GitHub's "Cite this repository" widget. A BibTeX entry is provided below:
+
+```bibtex
+@software{pydflt,
+  author  = {Noah Schutte and Kim {van den Houten} and Grigorii Veviurko},
+  title   = {{PyDFLT}: A {Python}-based Decision-Focused Learning Toolbox},
+  year    = {2026},
+  version = {0.1.1},
+  doi     = {10.5281/zenodo.XXXXXXX},
+  url     = {https://github.com/PyDFLT/PyDFLT}
+}
+```
+
+The DOI above is the **Zenodo concept DOI**, which always resolves to the latest archived release of PyDFLT. Update the `version` / `year` fields to match the specific release you used.
+
+### Using Weights & Biases and Optuna
+Weights & Biases is a helpful tool to analyze experiments, while Optuna is an effective tool for hyperparameter tuning. To use either of these tools, make sure to check out the notebooks in the example folder.
+
+
+### Contributing
+If you want to contribute, you can fork the repository and send a pull request. We make use of **uv** (https://github.com/astral-sh/uv) for the installation and testing. Install uv [here](https://docs.astral.sh/uv/getting-started/installation/). To create the virtual environment:
+
+`uv sync --all-extras --all-groups`
+
+Notice that your IDE might automatically create the environment, but does only install the basic package dependencies. Make sure to run above command to install all dependencies.
+
+#### Before committing
+
+We make use of **pre-commit** (https://pre-commit.com/) and **pytest** to ensure code is consistent and functioning properly. Both are part of the dev dependencies and therefore installed in the virtual environment. Before committing make sure to run both:
+
+`uv run pre-commit run --all-files`
+
+`uv run pytest`
+
+#### Documentation
+
+We use **Sphinx** (https://www.sphinx-doc.org/en/master/) for the documentation.  All files to build the documentation are in the docs directory. To create the docs, run:
+
+`uv run make html --directory=docs`
+
+Then, open docs/build/html/api/src.html in a browser to view the created docs.
+
+
+### Reproducing papers
+
+*Sufficient Decision Proxies for Decision-Focused Learning*, IJCAI 2026 by Noah Schutte, Krzysztof Postek, Grigorii Veviurko, and Neil Yorke-Smith
+
+**Running the experiments:** see [`experiments/sufficient-decision-proxies-ijcai2026/REPRODUCE.md`](experiments/sufficient-decision-proxies-ijcai2026/REPRODUCE.md) for the exact run commands per problem (portfolio, WSMC, PTSP).
+
+### References
+
+[1] Akshay Agrawal, Brandon Amos, Shane Barratt, Stephen Boyd, Steven Diamond, and J Zico Kolter. Differentiable convex optimization layers. Advances in neural information processing systems, 32, 2019. doi:10.48550/arXiv.1910.12430.
+
+[2] Bo Tang and Elias B. Khalil. Pyepo: a pytorch-based end-to-end predict-then-optimize library for linear and integer programming. Mathematical Programming Computation, 16(3):297–335, 2024. doi:10.1007/s12532-024-00255-x.
+
+[3] Mattia Silvestri, Senne Berden, Jayanta Mandi, Ali ˙Irfan Mahmuto˘gulları, Maxime Mulamba, Allegra De Filippo, Tias Guns, and Michele Lombardi. Score function gradient estimation to widen the applicability of decision-focused learning. CoRR, abs/2307.05213, 2023. doi:10.48550/arXiv.2307.05213.
+
+[4] Arman Zharmagambetov, Brandon Amos, Aaron Ferber, Taoan Huang, Bistra Dilkina, and Yuandong Tian. Landscape surrogate: Learning decision losses for mathematical optimization under partial information. Advances in Neural Information Processing Systems, 36:27332–27350, 2023. doi:10.48550/arXiv.2307.08964.
